@@ -1,0 +1,18 @@
+%h1 Lights
+
+- if @lights.present?
+  -@lights.each do |light|
+    %p
+      = link_to light.name, light_path(light)      
+      - if light.lit
+        ON
+      - else 
+        OFF
+      = link_to 'Edit', edit_light_path(light), :class => 'btn btn-primary btn-xs'
+      = link_to 'Destroy', light, :method => :delete, :data => { :confirm => 'Are you sure?' },:class => 'btn btn-danger btn-xs'
+
+- else 
+  %p No lights currently available. 
+
+
+= link_to 'New Light', new_light_path

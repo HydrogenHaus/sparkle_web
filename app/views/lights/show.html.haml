@@ -1,0 +1,12 @@
+
+.name
+  %h1= @light.name
+
+.state
+  - if @light.lit
+    ON
+  - else 
+    OFF
+
+
+= link_to 'See all lights', lights_path

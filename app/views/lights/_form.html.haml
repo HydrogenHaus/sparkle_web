@@ -1,0 +1,10 @@
+= simple_form_for @light, :html => {:multiplart => true} do |f|
+  - if @light.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@light.errors.count, "error")} prohibited this light from being saved:"
+      %ul
+        - @light.errors.full_messages.each do |msg|
+          %li= msg
+  = f.input :name
+  .actions
+    = f.submit 'Save', :class => 'btn btn-success'

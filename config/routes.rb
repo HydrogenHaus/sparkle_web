@@ -1,4 +1,8 @@
 SparkleWeb::Application.routes.draw do
+
+  root 'lights#index'
+  resources :lights
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
