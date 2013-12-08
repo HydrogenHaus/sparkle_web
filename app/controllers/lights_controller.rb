@@ -2,6 +2,10 @@ class LightsController < ApplicationController
 
   def index 
     @lights = Light.all
+    respond_to do |format|
+      format.html # index.html.haml
+      format.json { render json: @lights}
+    end
   end
 
   def new
@@ -10,6 +14,10 @@ class LightsController < ApplicationController
 
   def show
     @light = Light.find(params[:id])
+    respond_to do |format| 
+      format.html { render :layout => "mobile" }
+      format.json { render :json => @light } 
+    end
   end
 
   # POST /lights
@@ -46,7 +54,7 @@ class LightsController < ApplicationController
     respond_to do |format|
       if @tile.update(tile_params)
         format.html { redirect_to @tile, notice: 'Tile was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render nothing: true, status: 204 }
       else
         format.html { render action: 'edit' }
         format.json { render json: @tile.errors, status: :unprocessable_entity }

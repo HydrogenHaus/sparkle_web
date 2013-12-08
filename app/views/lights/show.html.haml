@@ -1,12 +1,22 @@
 
-.name
-  %h1= @light.name
+.show{"ng-controller" => "LightsCtrl"}
+  .name
+    %h1= @light.name
 
-.state
-  - if @light.lit
-    ON
-  - else 
-    OFF
+  .state
+    {{ lit }}
+    %a{"ng-click" => "on_switch()"}
+      ON
+    %a{"ng-click" => "off_switch()"}
+      OFF
 
+    / - if @light.lit
+    /   ON | 
+    /   %a{"ng-click" => "off_switch()"}
+    /     OFF
+    / - else 
+    /   %a{"ng-click" => "on_switch()"}
+    /     ON
+    /   | OFF
 
-= link_to 'See all lights', lights_path
+  / = link_to 'See all lights', lights_path
